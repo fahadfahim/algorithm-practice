@@ -8,31 +8,31 @@
  */
 
 function selectionSort(arr) {
-    for (var i = 0; i < arr.length; i++) {
-        var lowest = i;
-        console.log('arr[i]: ', arr[i]);
-        console.log('lowest .. i', lowest)
-        for (var j = i + 1; j < arr.length; j++) {
-            console.log('arr[j]', arr[j]);
-            if (arr[j] < arr[lowest]) {
-                console.log('arr[lowest]', arr[lowest]);
-                lowest = j;
-                console.log('lowest', lowest)
-            }
-        }
-        // console.log('****************')
-        // console.log('before swapping arr', arr);
-        // console.log('swapping to:');
-        if (i !== lowest) {
-            var temp = arr[i];
-            arr[i] = arr[lowest];
-            arr[lowest] = temp;
-        }
-
-        // console.log('after swapping arr', arr);
-        // console.log('****************')
+  for (var i = 0; i < arr.length; i++) {
+    var lowest = i;
+    console.log('arr[i]: ', arr[i]);
+    console.log('lowest .. i', lowest)
+    for (var j = i + 1; j < arr.length; j++) {
+      console.log('arr[j]', arr[j]);
+      if (arr[j] < arr[lowest]) {
+        console.log('arr[lowest]', arr[lowest]);
+        lowest = j;
+        console.log('lowest', lowest)
+      }
     }
-    return arr;
+    // console.log('****************')
+    // console.log('before swapping arr', arr);
+    // console.log('swapping to:');
+    if (i !== lowest) {
+      var temp = arr[i];
+      arr[i] = arr[lowest];
+      arr[lowest] = temp;
+    }
+
+    // console.log('after swapping arr', arr);
+    // console.log('****************')
+  }
+  return arr;
 }
 
 selectionSort([34, 22, 10, 19, 17])
