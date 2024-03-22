@@ -229,7 +229,75 @@ class SinglyLinkedList {
         return true
 
     }
+    /**
+     * ==== Remove ==== 
+     * Removing a node from the linked list at a specific position
+     * Infromal 
+     * Remove takes in an index and it removes the value at that index and it matches up the list around it 
+     * ===== Remove pseudocode ====
+     * 1 ) if the index is less than zero or greater than the length return undefined
+     * 2 ) if the index is the same as the length-1 , pop
+     * 3 ) if the index is 0 shift
+     * 4 ) otherwise using the get method access the node at the index-1
+     * 5 ) set the next property on that node to be the next of the next node
+     * 6 ) decrement the length
+     * 7 ) return the value of the node removed
+     */
+    remove(index) {
+        //1
+        if (index < 0 || index >= this.length) return undefined;
+        //3
+        if (index === 0) return this.shift()
+        //2
+        if (index === this.length - 1) return this.pop()
+        //4
+        var previousNode = this.get(index - 1);
+        var removed = previousNode.next;
+        previousNode.next = removed.next;
+        this.length--;
+        return removed;
 
+    }
+
+    /**
+     * ===== Reverse =====
+     * Reverse the linked list in place .
+     * ==== Reverse pseudocode ====
+     * 1 ) swap the head and tail
+     * 2 ) create a variable called next
+     * 3 ) create a variable called prev
+     * 4 ) create a variable called node and initialize it to the head property
+     * 5 ) loop through the list
+     * 6 ) set next to be the next property on whatever noode is 
+     * 7 ) set the next property on the node to be whatever prev is 
+     * 8 ) set prev to be the value of the node variable
+     * 9 ) set the node variable to be the value of the next variable 
+     */
+    reverse() {
+        var node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        var next;
+        var prev = null;
+        for (var i = 0; i < this.length; i++) {
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
+        return this;
+    }
+
+    //print method for see the linked list 
+    print() {
+        var arr = [];
+        var current = this.head;
+        while (current) {
+            arr.push(current.val);
+            current = current.next;
+        }
+        console.log(arr);
+    }
 
 }
 
