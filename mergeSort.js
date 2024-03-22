@@ -49,4 +49,27 @@ function merge(arr1, arr2) {
     return result;
 }
 
-console.log('merge', merge([1, 10, 50], [2, 14, 99, 100]));
+//console.log('merge', merge([1, 10, 50], [2, 14, 99, 100]));
+
+/**
+ *========= Merge sort seudocode ========
+ 1 ) Break up the array into halves until you have arrays that are empty or have one element 
+ 2 ) Once you have smaller sorted arrays merge those arrays with other sorted arrasy until you are back at the full length of the array
+ 3 ) Once the array has been merged back together return the merged ad sorted array 
+ */
+function mergeSort(arr) {
+    console.log('array', arr);
+    if (arr.length <= 1) return arr;
+    let mid = Math.floor(arr.length / 2);
+    console.log('mid: ', mid);
+    //here we are using recursion to call mergeSort until we are on only one element at the array
+
+    let left = mergeSort(arr.slice(0, mid));
+    console.log('left: ', left);
+    let right = mergeSort(arr.slice(mid));
+    console.log('right: ', right);
+    return merge(left, right);
+
+}
+
+console.log('mergeSort', mergeSort([17, 10, 50, 2]));
